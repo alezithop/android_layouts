@@ -38,6 +38,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.octomembers.R
 import com.raywenderlich.android.octomembers.model.Member
 import com.raywenderlich.android.octomembers.repository.remote.RemoteRepository
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_member.*
 
 
@@ -77,7 +78,12 @@ class MemberActivity : AppCompatActivity(), MemberContract.View {
   private fun memberLoginFromIntent() = intent.getStringExtra(EXTRA_MEMBER_LOGIN)
 
   override fun showMember(member: Member) {
+    Picasso.get().load(member.avatarUrl).into(memberAvatar)
     memberName.text = member.name
+    memberLogin.text = member.login
+    memberCompany.text = member.company
+    memberEmail.text = member.email
+    memberType.text = member.type
   }
 
   override fun showErrorRetrievingMember() {
