@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Octo Members</string>
+    <string name="team_hint">Ingresa un nombre de equipo</string>
+    <string name="team_button">MOSTRAR MIEMBROS</string>
+    <string name="error_retrieving_team">Error al obtener equipo</string>
+    <string name="error_retrieving_member">Error al obtener miembro</string>
+    <string name="error_team_name_empty">El nombre del equipo no puede estar vacio</string>
+    <string name="contentDescription_teamMemberAvatar">Avatar de miembro de equipo</string>
+    <string name="label_login">usuario:</string>
+    <string name="label_company">compañia:</string>
+    <string name="label_email">correo electronico:</string>
+    <string name="label_type">tipo:</string>
+</resources>
