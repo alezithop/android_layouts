@@ -11,7 +11,8 @@
         android:layout_height="@dimen/list_item_height"
         tools:srcCompat="@tools:sample/avatars"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/contentDescription_teamMemberAvatar"/>
 
     <TextView
         android:id="@+id/teamMemberLogin"
@@ -33,6 +34,7 @@
       android:layout_marginEnd="@dimen/padding_standard"
       android:textSize="@dimen/type_text_size"
       android:layout_alignBaseline="@id/teamMemberLogin"
+      android:gravity="end"
       android:text="TextView" />
 
 </RelativeLayout>
