@@ -20,7 +20,7 @@
             android:layout_height="@dimen/detail_avatar_size"
             android:contentDescription="@string/contentDescription_teamMemberAvatar"
             android:padding="@dimen/padding_standard"
-            tools:scr="@drawable/ic_launcher_backgroud"></ImageView>
+            tools:scr="@drawable/ic_launcher_backgroud" />
         <TextView
             android:id="@+id/memberName"
             android:layout_width="0dp"
@@ -40,7 +40,8 @@
         android:layout_weight="1"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
