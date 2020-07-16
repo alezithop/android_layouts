@@ -30,5 +30,6 @@
     <item name="android:paddingBottom">@dimen/padding_half</item>
     <item name="android:paddingStart">@dimen/padding_half</item>
     <item name="android:paddingEnd">@dimen/padding_standard</item>
+    <item name="android:textColor">#FFFA00</item>
   </style>
 </resources>
