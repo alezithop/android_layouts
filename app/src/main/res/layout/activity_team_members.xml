@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/colorAccent"
+        android:background="@color/teamMembersHeader"
         android:orientation="horizontal"
         android:padding="@dimen/padding_standard">
 
@@ -45,8 +45,7 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:visibility="invisible"
-            tools:visibility="visible"
-            />
+            tools:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/loadingIndicator"
@@ -54,7 +53,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            tools:visibility="visible"
-            />
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icRunning"
+            android:layout_width="@dimen/list_item_height"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_run"
+
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/emptyState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_state_format"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+        <!--use razeware in the search to see the expected empty message-->
     </FrameLayout>
 </RelativeLayout>

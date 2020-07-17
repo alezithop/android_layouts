@@ -32,7 +32,6 @@ package com.raywenderlich.android.octomembers.ui.teammembers
 
 import com.raywenderlich.android.octomembers.model.Member
 
-
 interface TeamMembersContract {
 
   interface View {
@@ -43,6 +42,9 @@ interface TeamMembersContract {
     fun hideLoading()
     fun disableInput()
     fun enableInput()
+    fun showEmptyState()
+    fun hideEmptyState()
+    fun hideMembers()
   }
 
   interface Presenter {

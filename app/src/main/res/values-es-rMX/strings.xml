@@ -11,4 +11,5 @@
     <string name="label_company">compañia:</string>
     <string name="label_email">correo electronico:</string>
     <string name="label_type">tipo:</string>
+    <string name="empty_state_format">No se encontraron miembros para %1$s.</string>
 </resources>
