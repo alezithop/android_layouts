@@ -127,12 +127,14 @@ class TeamMembersActivity : AppCompatActivity(), TeamMembersContract.View {
     showMembers.isEnabled = true
   }
   override fun showEmptyState() {
+    icRunning.visibility = View.VISIBLE
     emptyState.visibility = View.VISIBLE
     emptyState.text = String.format(getString(R.string.empty_state_format), teamName.text.toString())
   }
 
   override fun hideEmptyState() {
     emptyState.visibility = View.INVISIBLE
+    icRunning.visibility = View.INVISIBLE
   }
 
   override fun hideMembers() {
