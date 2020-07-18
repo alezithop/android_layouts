@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_top_not_found_message">
+            android:layout_marginTop="@dimen/margin_top_not_found_layout">
 
             <ImageView
                 android:id="@+id/icRunning"
@@ -74,7 +74,7 @@
                 android:contentDescription="@string/error_retrieving_team"
                 android:src="@drawable/ic_run"
                 android:visibility="invisible"
-                tools:srcCompat="@tools:sample/avatars"
+                tools:srcCompat="@drawable/ic_run"
                 tools:visibility="visible" />
 
             <TextView
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/icRunning"
                 android:layout_gravity="center"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="@dimen/margin_top_not_found_text"
                 android:text="@string/empty_state_format"
                 android:textSize="@dimen/detail_name_text"
                 android:visibility="invisible"
