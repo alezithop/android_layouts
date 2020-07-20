@@ -1,51 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
     tools:context="com.raywenderlich.android.octomembers.ui.member.MemberActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_avatar_container_size"
+        android:id="@+id/avatarContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/colorAccent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/memberInfoContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/memberAvatar"
             android:layout_width="@dimen/detail_avatar_size"
             android:layout_height="@dimen/detail_avatar_size"
             android:contentDescription="@string/contentDescription_teamMemberAvatar"
-            android:padding="@dimen/padding_standard"
+            android:padding="@dimen/padding_double"
             tools:scr="@drawable/ic_launcher_backgroud" />
+
         <TextView
             android:id="@+id/memberName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="@dimen/padding_standard"
             android:maxLines="3"
+            android:padding="@dimen/padding_standard"
             android:textSize="@dimen/detail_name_text"
-            tools:text="FirstName LastName"
-            />
+            tools:text="FirstName LastName" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/memberInfoContainer"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarContainer">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/memberLoginContainer">
 
             <TextView
                 style="@style/member_label"
@@ -58,7 +67,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/memberCompanyContainer">
 
             <TextView
                 style="@style/member_label"
@@ -71,7 +81,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/memberEmailContainer">
 
             <TextView
                 style="@style/member_label"
@@ -84,7 +95,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/memberTypeContainer">
 
             <TextView
                 style="@style/member_label"
@@ -95,4 +107,4 @@
                 style="@style/member_info" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

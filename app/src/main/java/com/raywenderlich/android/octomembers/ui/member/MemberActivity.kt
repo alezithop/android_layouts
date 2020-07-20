@@ -33,6 +33,9 @@ package com.raywenderlich.android.octomembers.ui.member
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.octomembers.R
@@ -75,15 +78,35 @@ class MemberActivity : AppCompatActivity(), MemberContract.View {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 
+  private fun showMemberName(member: Member) {
+    if(member.name != null && member.name.isNotEmpty()) {
+      memberName.text = member.name
+    } else {
+      memberName.visibility = View.GONE
+    }
+  }
+
+  private fun showStringInFieldOrGone(string: String?, textView: TextView, container: ViewGroup) {
+    if(string != null && string.isNotEmpty())
+      textView.text = string
+    else
+      container.visibility = View.GONE
+  }
+
+  private fun showMemberInfo(member: Member) {
+    showStringInFieldOrGone(member.login, memberLogin, memberLoginContainer)
+    showStringInFieldOrGone(member.company, memberCompany, memberCompanyContainer)
+    showStringInFieldOrGone(member.email, memberEmail, memberEmailContainer)
+    showStringInFieldOrGone(member.type, memberType, memberTypeContainer)
+    showStringInFieldOrGone(member.type, memberType, memberTypeContainer)
+  }
+
   private fun memberLoginFromIntent() = intent.getStringExtra(EXTRA_MEMBER_LOGIN)
 
   override fun showMember(member: Member) {
     Picasso.get().load(member.avatarUrl).into(memberAvatar)
-    memberName.text = member.name
-    memberLogin.text = member.login
-    memberCompany.text = member.company
-    memberEmail.text = member.email
-    memberType.text = member.type
+    showMemberName(member)
+    showMemberInfo(member)
   }
 
   override fun showErrorRetrievingMember() {
