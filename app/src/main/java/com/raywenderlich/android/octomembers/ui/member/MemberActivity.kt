@@ -47,69 +47,73 @@ import kotlinx.android.synthetic.main.activity_member.*
 
 class MemberActivity : AppCompatActivity(), MemberContract.View {
 
-  lateinit var presenter: MemberContract.Presenter
+    lateinit var presenter: MemberContract.Presenter
 
-  companion object {
-    const val EXTRA_MEMBER_LOGIN = "EXTRA_MEMBER_LOGIN"
+    companion object {
+        const val EXTRA_MEMBER_LOGIN = "EXTRA_MEMBER_LOGIN"
 
-    fun newIntent(context: Context, memberLogin: String): Intent {
-      val intent = Intent(context, MemberActivity::class.java)
-      intent.putExtra(EXTRA_MEMBER_LOGIN, memberLogin)
-      return intent
+        fun newIntent(context: Context, memberLogin: String): Intent {
+            val intent = Intent(context, MemberActivity::class.java)
+            intent.putExtra(EXTRA_MEMBER_LOGIN, memberLogin)
+            return intent
+        }
     }
-  }
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_member)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_member)
 
-    setupPresenter()
-    setupActionBar()
+        setupPresenter()
+        setupActionBar()
 
-    presenter.retrieveMember(memberLoginFromIntent())
-  }
-
-  private fun setupPresenter() {
-    presenter = MemberPresenter(RemoteRepository(), this)
-  }
-
-  private fun setupActionBar() {
-    title = memberLoginFromIntent()
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-  }
-
-  private fun showMemberName(member: Member) {
-    if(member.name != null && member.name.isNotEmpty()) {
-      memberName.text = member.name
-    } else {
-      memberName.visibility = View.GONE
+        presenter.retrieveMember(memberLoginFromIntent())
     }
-  }
 
-  private fun showStringInFieldOrGone(string: String?, textView: TextView, container: ViewGroup) {
-    if(string != null && string.isNotEmpty())
-      textView.text = string
-    else
-      container.visibility = View.GONE
-  }
+    private fun setupPresenter() {
+        presenter = MemberPresenter(RemoteRepository(), this)
+    }
 
-  private fun showMemberInfo(member: Member) {
-    showStringInFieldOrGone(member.login, memberLogin, memberLoginContainer)
-    showStringInFieldOrGone(member.company, memberCompany, memberCompanyContainer)
-    showStringInFieldOrGone(member.email, memberEmail, memberEmailContainer)
-    showStringInFieldOrGone(member.type, memberType, memberTypeContainer)
-    showStringInFieldOrGone(member.type, memberType, memberTypeContainer)
-  }
+    private fun setupActionBar() {
+        title = memberLoginFromIntent()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
-  private fun memberLoginFromIntent() = intent.getStringExtra(EXTRA_MEMBER_LOGIN)
+    private fun showMemberName(member: Member) {
+        if (member.name != null && member.name.isNotEmpty()) {
+            memberName.text = member.name
+            memberName.visibility = View.VISIBLE
+        } else {
+            memberName.visibility = View.GONE
+        }
+    }
 
-  override fun showMember(member: Member) {
-    Picasso.get().load(member.avatarUrl).into(memberAvatar)
-    showMemberName(member)
-    showMemberInfo(member)
-  }
+    private fun showStringInFieldOrGone(string: String?, textView: TextView, labelTextView: TextView) {
+        if (string != null && string.isNotEmpty()) {
+            textView.text = string
+            textView.visibility = View.VISIBLE
+            labelTextView.visibility = View.VISIBLE
+        } else {
+            textView.visibility = View.GONE
+            labelTextView.visibility = View.GONE
+        }
+    }
 
-  override fun showErrorRetrievingMember() {
-    Toast.makeText(this, getString(R.string.error_retrieving_member), Toast.LENGTH_SHORT).show()
-  }
+    private fun showMemberInfo(member: Member) {
+        showStringInFieldOrGone(member.login, memberLogin, labelLogin)
+        showStringInFieldOrGone(member.company, memberCompany, labelCompany)
+        showStringInFieldOrGone(member.email, memberEmail, labelEmail)
+        showStringInFieldOrGone(member.type, memberType, labelType)
+    }
+
+    private fun memberLoginFromIntent() = intent.getStringExtra(EXTRA_MEMBER_LOGIN)
+
+    override fun showMember(member: Member) {
+        Picasso.get().load(member.avatarUrl).into(memberAvatar)
+        showMemberName(member)
+        showMemberInfo(member)
+    }
+
+    override fun showErrorRetrievingMember() {
+        Toast.makeText(this, getString(R.string.error_retrieving_member), Toast.LENGTH_SHORT).show()
+    }
 }
