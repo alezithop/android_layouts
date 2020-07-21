@@ -116,4 +116,13 @@ class MemberActivity : AppCompatActivity(), MemberContract.View {
     override fun showErrorRetrievingMember() {
         Toast.makeText(this, getString(R.string.error_retrieving_member), Toast.LENGTH_SHORT).show()
     }
+
+
+    /*private fun showGreetings() {
+        if (true) {
+            return true;
+        } else {
+            return false;
+        }
+    }*/
 }
